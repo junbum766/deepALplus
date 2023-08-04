@@ -1,0 +1,13 @@
+dataset: CIFAR10
+AL strategy: WAAL
+number of labeled pool: 50
+number of unlabeled pool: 49950
+number of testing pool: 10000
+batch size: 50
+quota: 300
+time of repeat experiments: 3
+0: 0.303
+1: 0.286
+2: 0.271
+mean acc: 0.2867. std dev acc: 0.0131
+mean time: 13588.0. std dev acc: 28.8906

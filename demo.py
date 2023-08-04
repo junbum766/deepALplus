@@ -28,6 +28,7 @@ STRATEGY_NAME = args_input.ALstrategy
 
 
 SEED = args_input.seed
+os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ['TORCH_HOME']='./basicmodel'
 os.environ["CUDA_VISIBLE_DEVICES"] = str(args_input.gpu)
 
@@ -42,6 +43,9 @@ use_cuda = torch.cuda.is_available()
 device = torch.device("cuda" if use_cuda else "cpu")
 
 #recording
+if not os.path.exists('./logfile'):
+	os.mkdir('./logfile')
+
 sys.stdout = Logger(os.path.abspath('') + '/logfile/' + DATA_NAME+ '_'  + STRATEGY_NAME + '_' + str(NUM_QUERY) + '_' + str(NUM_INIT_LB) +  '_' + str(args_input.quota) + '_normal_log.txt')
 warnings.filterwarnings('ignore')
 
@@ -132,6 +136,9 @@ while (iteration > 0):
 	all_acc.append(acc)
 	
 	#save model
+	if not os.path.exists('./modelpara'):
+		os.mkdir('./modelpara')
+
 	timestamp = re.sub('\.[0-9]*','_',str(datetime.datetime.now())).replace(" ", "_").replace("-", "").replace(":","")
 	model_path = './modelpara/'+timestamp + DATA_NAME+ '_'  + STRATEGY_NAME + '_' + str(NUM_QUERY) + '_' + str(NUM_INIT_LB) +  '_' + str(args_input.quota)  +'.params'
 	end = datetime.datetime.now()
@@ -139,6 +146,9 @@ while (iteration > 0):
 	torch.save(strategy.get_model().state_dict(), model_path)
 	
 # cal mean & standard deviation
+if not os.path.exists('./results'):
+	os.mkdir('./results')
+	
 acc_m = []
 file_name_res_tot = DATA_NAME+ '_'  + STRATEGY_NAME + '_' + str(NUM_QUERY) + '_' + str(NUM_INIT_LB) +  '_' + str(args_input.quota) + '_normal_res_tot.txt'
 file_res_tot =  open(os.path.join(os.path.abspath('') + '/results', '%s' % file_name_res_tot),'w')
@@ -167,7 +177,6 @@ file_res_tot.writelines('mean acc: '+str(mean_acc)+'. std dev acc: '+str(stddev_
 file_res_tot.writelines('mean time: '+str(mean_time)+'. std dev acc: '+str(stddev_time)+'\n')
 
 # save result
-
 file_name_res = DATA_NAME+ '_'  + STRATEGY_NAME + '_' + str(NUM_QUERY) + '_' + str(NUM_INIT_LB) +  '_' + str(args_input.quota) + '_normal_res.txt'
 file_res =  open(os.path.join(os.path.abspath('') + '/results', '%s' % file_name_res),'w')
 

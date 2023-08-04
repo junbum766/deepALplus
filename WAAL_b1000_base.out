@@ -1,0 +1,55 @@
+
+CIFAR10
+RANDOM SEED 4666
+WAAL
+Round 0
+testing accuracy 0.4742
+
+
+Round 1
+testing accuracy 0.5334
+
+
+Round 2
+testing accuracy 0.6355
+
+
+Round 3
+testing accuracy 0.7186
+
+
+Round 4
+testing accuracy 0.7309
+
+
+Round 5
+testing accuracy 0.7245
+
+
+Round 6
+testing accuracy 0.7509
+
+
+Round 7
+testing accuracy 0.7499
+
+
+Round 8
+testing accuracy 0.7715
+
+
+Round 9
+testing accuracy 0.8013
+
+
+Round 10
+testing accuracy 0.8065
+
+
+SEED 4666
+WAAL
+[0.4742 0.5334 0.6355 0.7186 0.7309 0.7245 0.7509 0.7499 0.7715 0.8013
+ 0.8065]
+0: 0.706
+mean AUBC(acc): 0.706. std dev AUBC(acc): 0.0
+mean time: 18249.0. std dev time: 0.0

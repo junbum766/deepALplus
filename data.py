@@ -62,33 +62,33 @@ class Data:
 
     
 def get_MNIST(handler, args_task):
-    raw_train = datasets.MNIST('./data/MNIST', train=True, download=True)
-    raw_test = datasets.MNIST('./data/MNIST', train=False, download=True)
+    raw_train = datasets.MNIST('/home/ubuntu/junbeom/data/MNIST', train=True, download=False)
+    raw_test = datasets.MNIST('/home/ubuntu/junbeom/data/MNIST', train=False, download=False)
     return Data(raw_train.data, raw_train.targets, raw_test.data, raw_test.targets, handler, args_task)
 
 def get_FashionMNIST(handler, args_task):
-    raw_train = datasets.FashionMNIST('./data/FashionMNIST', train=True, download=True)
-    raw_test = datasets.FashionMNIST('./data/FashionMNIST', train=False, download=True)
+    raw_train = datasets.FashionMNIST('/home/ubuntu/junbeom/data/FashionMNIST', train=True, download=True)
+    raw_test = datasets.FashionMNIST('/home/ubuntu/junbeom/data/FashionMNIST', train=False, download=True)
     return Data(raw_train.data, raw_train.targets, raw_test.data, raw_test.targets, handler, args_task)
 
 def get_EMNIST(handler, args_task):
-    raw_train = datasets.EMNIST('./data/EMNIST', split = 'byclass', train=True, download=True)
-    raw_test = datasets.EMNIST('./data/EMNIST', split = 'byclass', train=False, download=True)
+    raw_train = datasets.EMNIST('/home/ubuntu/junbeom/data/EMNIST', split = 'byclass', train=True, download=True)
+    raw_test = datasets.EMNIST('/home/ubuntu/junbeom/data/EMNIST', split = 'byclass', train=False, download=True)
     return Data(raw_train.data, raw_train.targets, raw_test.data, raw_test.targets, handler, args_task)
 
 def get_SVHN(handler, args_task):
-    data_train = datasets.SVHN('./data/SVHN', split='train', download=True)
-    data_test = datasets.SVHN('./data/SVHN', split='test', download=True)
+    data_train = datasets.SVHN('/home/ubuntu/junbeom/data/SVHN', split='train', download=True)
+    data_test = datasets.SVHN('/home/ubuntu/junbeom/data/SVHN', split='test', download=True)
     return Data(data_train.data, torch.from_numpy(data_train.labels), data_test.data, torch.from_numpy(data_test.labels), handler, args_task)
 
 def get_CIFAR10(handler, args_task):
-    data_train = datasets.CIFAR10('./data/CIFAR10', train=True, download=True)
-    data_test = datasets.CIFAR10('./data/CIFAR10', train=False, download=True)
+    data_train = datasets.CIFAR10('/data/junbeom/data/cifar10', train=True, download=False)
+    data_test = datasets.CIFAR10('/data/junbeom/data/cifar10', train=False, download=False)
     return Data(data_train.data, torch.LongTensor(data_train.targets), data_test.data, torch.LongTensor(data_test.targets), handler, args_task)
 
 def get_CIFAR10_imb(handler, args_task):
-    data_train = datasets.CIFAR10('./data/CIFAR10', train=True, download=True)
-    data_test = datasets.CIFAR10('./data/CIFAR10', train=False, download=True)
+    data_train = datasets.CIFAR10('/data/junbeom/data/cifar10', train=True, download=True)
+    data_test = datasets.CIFAR10('/data/junbeom/data/cifar10', train=False, download=True)
     X_tr = data_train.data
     Y_tr = torch.from_numpy(np.array(data_train.targets)).long()
     X_te = data_test.data
@@ -107,23 +107,23 @@ def get_CIFAR10_imb(handler, args_task):
     return Data(X_tr_imb, Y_tr_imb, X_te, Y_te, handler, args_task)
 
 def get_CIFAR100(handler, args_task):
-    data_train = datasets.CIFAR100('./data/CIFAR100', train=True, download=True)
-    data_test = datasets.CIFAR100('./data/CIFAR100', train=False, download=True)
+    data_train = datasets.CIFAR100('/data/junbeom/data/cifar100', train=True, download=True)
+    data_test = datasets.CIFAR100('/data/junbeom/data/cifar100', train=False, download=True)
     return Data(data_train.data, torch.LongTensor(data_train.targets), data_test.data, torch.LongTensor(data_test.targets), handler, args_task)
 
 def get_TinyImageNet(handler, args_task):
     import cv2
-    #download data from http://cs231n.stanford.edu/tiny-imagenet-200.zip and unzip it into ./data/TinyImageNet
+    #download data from http://cs231n.stanford.edu/tiny-imagenet-200.zip and unzip it into /home/ubuntu/junbeom/data/TinyImageNet
     # deal with training set
     Y_train_t = []
     train_img_names = []
     train_imgs = []
     
-    with open('./data/TinyImageNet/tiny-imagenet-200/wnids.txt') as wnid:
+    with open('/home/ubuntu/junbeom/data/TinyImageNet/tiny-imagenet-200/wnids.txt') as wnid:
         for line in wnid:
             Y_train_t.append(line.strip('\n'))
     for Y in Y_train_t:
-        Y_path = './data/TinyImageNet/tiny-imagenet-200/train/' + Y + '/' + Y + '_boxes.txt'
+        Y_path = '/home/ubuntu/junbeom/data/TinyImageNet/tiny-imagenet-200/train/' + Y + '/' + Y + '_boxes.txt'
         train_img_name = []
         with open(Y_path) as Y_p:
             for line in Y_p:
@@ -134,7 +134,7 @@ def get_TinyImageNet(handler, args_task):
     for Y in Y_train_t:
         train_img = []
         for img_name in train_img_names[idx]:
-            img_path = os.path.join('./data/TinyImageNet/tiny-imagenet-200/train/', Y, 'images', img_name)
+            img_path = os.path.join('/home/ubuntu/junbeom/data/TinyImageNet/tiny-imagenet-200/train/', Y, 'images', img_name)
             train_img.append(cv2.imread(img_path))
         train_imgs.append(train_img)
         idx = idx + 1
@@ -154,7 +154,7 @@ def get_TinyImageNet(handler, args_task):
     Y_test = []
     test_img_names = []
     test_imgs = []
-    with open('./data/TinyImageNet/tiny-imagenet-200/val/val_annotations.txt') as val:
+    with open('/home/ubuntu/junbeom/data/TinyImageNet/tiny-imagenet-200/val/val_annotations.txt') as val:
         for line in val:
             test_img_names.append(line.strip('\n').split('\t')[0])
             Y_test_t.append(line.strip('\n').split('\t')[1])
@@ -165,7 +165,7 @@ def get_TinyImageNet(handler, args_task):
     test_labels = np.array(Y_test)
     test_imgs = []
     for img_name in test_img_names:
-        img_path = os.path.join('./data/TinyImageNet/tiny-imagenet-200/val/images', img_name)
+        img_path = os.path.join('/home/ubuntu/junbeom/data/TinyImageNet/tiny-imagenet-200/val/images', img_name)
         test_imgs.append(cv2.imread(img_path))
     test_imgs = np.array(test_imgs)
     X_te = []
@@ -183,7 +183,7 @@ def get_openml(handler, args_task, selection = 6):
     import openml
     from sklearn.preprocessing import LabelEncoder
     openml.config.apikey = '3411e20aff621cc890bf403f104ac4bc'
-    openml.config.set_cache_directory('./data/openml/')
+    openml.config.set_cache_directory('/home/ubuntu/junbeom/data/openml/')
     ds = openml.datasets.get_dataset(selection)
     data = ds.get_data(target=ds.default_target_attribute)
     X = np.asarray(data[0])
@@ -217,7 +217,7 @@ def get_openml(handler, args_task, selection = 6):
 
 def get_BreakHis(handler, args_task):
     # download data from https://www.kaggle.com/datasets/ambarish/breakhis and unzip it in data/BreakHis/
-    data_dir = './data/BreakHis/BreaKHis_v1/BreaKHis_v1/histology_slides/breast'
+    data_dir = '/home/ubuntu/junbeom/data/BreakHis/BreaKHis_v1/BreaKHis_v1/histology_slides/breast'
     data = datasets.ImageFolder(root = data_dir, transform = None).imgs
     train_ratio = 0.7
     test_ratio = 0.3
@@ -239,8 +239,8 @@ def get_PneumoniaMNIST(handler, args_task):
     # download data from https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia and unzip it in data/PhwumniaMNIST/
     import cv2
 
-    data_train_dir = './data/PneumoniaMNIST/chest_xray/train/'
-    data_test_dir = './data/PneumoniaMNIST/chest_xray/test/'
+    data_train_dir = '/home/ubuntu/junbeom/data/PneumoniaMNIST/chest_xray/train/'
+    data_test_dir = '/home/ubuntu/junbeom/data/PneumoniaMNIST/chest_xray/test/'
     assert os.path.exists(data_train_dir)
     assert os.path.exists(data_test_dir)
 
@@ -304,7 +304,7 @@ def get_PneumoniaMNIST(handler, args_task):
 def get_waterbirds(handler, args_task):
     import wilds
     from torchvision import transforms
-    dataset = wilds.get_dataset(dataset='waterbirds', root_dir='./data/waterbirds', download='True')
+    dataset = wilds.get_dataset(dataset='waterbirds', root_dir='/home/ubuntu/junbeom/data/waterbirds', download='True')
     trans = transforms.Compose([transforms.Resize([255,255])])
     train = dataset.get_subset(split = 'train',transform = trans)
     test = dataset.get_subset(split = 'test', transform = trans)
