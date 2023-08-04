@@ -27,6 +27,7 @@ class Strategy:
             self.dataset.labeled_idxs[neg_idxs] = False
 
     def train(self, data = None, model_name = None):
+        class_list = np.zeros(10) ### class Distribution 체크
         if model_name == None:
             if data == None:
                 labeled_idxs, labeled_data = self.dataset.get_labeled_data()
@@ -39,6 +40,9 @@ class Strategy:
                 X_labeled, Y_labeled = self.dataset.get_partial_labeled_data()
                 X_unlabeled, Y_unlabeled = self.dataset.get_partial_unlabeled_data()
                 self.net.train(labeled_data, X_labeled, Y_labeled,X_unlabeled, Y_unlabeled)
+                for i in Y_labeled: ###
+                    class_list[i] += 1 ###
+                print("Class Distribution : ", class_list) ###
             else:
                 raise NotImplementedError
 

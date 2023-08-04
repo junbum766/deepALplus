@@ -37,7 +37,7 @@ class Net_LPL:
         self.device = device
         self.net_lpl = net_lpl
         
-    def train(self, data, weight = 1.0, margin = 1.0 , lpl_epoch = 20):
+    def train(self, data, weight = 1.0, margin = 1.0 , lpl_epoch = 120): # 20
         n_epoch = self.params['n_epoch']
         n_epoch = lpl_epoch + self.params['n_epoch']
         epoch_loss = lpl_epoch
@@ -52,7 +52,9 @@ class Net_LPL:
             optimizer = optim.SGD(self.clf.parameters(), **self.params['optimizer_args'])
         else:
             raise NotImplementedError
-        optimizer_lpl = optim.Adam(self.clf_lpl.parameters(), lr = 0.01)
+        optimizer_lpl = optim.Adam(self.clf_lpl.parameters(), lr = 0.1)
+        
+        scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=[160], gamma=0.1)
 
         loader = DataLoader(data, shuffle=True, **self.params['loader_tr_args'])
         self.clf.train()
@@ -80,6 +82,8 @@ class Net_LPL:
                 loss.backward()
                 optimizer.step()
                 optimizer_lpl.step()
+
+            scheduler.step()
 
     def predict(self, data):
         self.clf.eval()
@@ -334,10 +338,10 @@ class LossNet(nn.Module):
 	def __init__(self, feature_sizes=[28, 14, 7, 4], num_channels=[64, 128, 256, 512], interm_dim=128):
 		super(LossNet, self).__init__()
 		
-		self.GAP1 = nn.AvgPool2d(feature_sizes[0])
-		self.GAP2 = nn.AvgPool2d(feature_sizes[1])
-		self.GAP3 = nn.AvgPool2d(feature_sizes[2])
-		self.GAP4 = nn.AvgPool2d(feature_sizes[3])
+		self.GAP1 = nn.AvgPool2d(feature_sizes[0], ceil_mode=True)
+		self.GAP2 = nn.AvgPool2d(feature_sizes[1], ceil_mode=True)
+		self.GAP3 = nn.AvgPool2d(feature_sizes[2], ceil_mode=True)
+		self.GAP4 = nn.AvgPool2d(feature_sizes[3], ceil_mode=True)
 
 		self.FC1 = nn.Linear(num_channels[0], interm_dim)
 		self.FC2 = nn.Linear(num_channels[1], interm_dim)

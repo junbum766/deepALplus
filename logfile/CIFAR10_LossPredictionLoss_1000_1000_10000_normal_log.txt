@@ -1,0 +1,54 @@
+CIFAR10
+RANDOM SEED 4666
+LossPredictionLoss
+Round 0
+testing accuracy 0.3508
+
+
+Round 1
+testing accuracy 0.5152
+
+
+Round 2
+testing accuracy 0.5427
+
+
+Round 3
+testing accuracy 0.6897
+
+
+Round 4
+testing accuracy 0.7358
+
+
+Round 5
+testing accuracy 0.7723
+
+
+Round 6
+testing accuracy 0.7984
+
+
+Round 7
+testing accuracy 0.7482
+
+
+Round 8
+testing accuracy 0.8196
+
+
+Round 9
+testing accuracy 0.8367
+
+
+Round 10
+testing accuracy 0.8373
+
+
+SEED 4666
+LossPredictionLoss
+[0.3508 0.5152 0.5427 0.6897 0.7358 0.7723 0.7984 0.7482 0.8196 0.8367
+ 0.8373]
+0: 0.705
+mean AUBC(acc): 0.705. std dev AUBC(acc): 0.0
+mean time: 4144.0. std dev time: 0.0

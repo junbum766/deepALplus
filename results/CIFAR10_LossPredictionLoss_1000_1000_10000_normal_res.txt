@@ -1,0 +1,19 @@
+dataset: CIFAR10
+AL strategy: LossPredictionLoss
+number of labeled pool: 1000
+number of unlabeled pool: 49000
+number of testing pool: 10000
+batch size: 1000
+quota: 10000
+time of repeat experiments: 1
+Size of training set is 1000, accuracy is 0.3508.
+Size of training set is 2000, accuracy is 0.5152.
+Size of training set is 3000, accuracy is 0.5427.
+Size of training set is 4000, accuracy is 0.6897.
+Size of training set is 5000, accuracy is 0.7358.
+Size of training set is 6000, accuracy is 0.7723.
+Size of training set is 7000, accuracy is 0.7984.
+Size of training set is 8000, accuracy is 0.7482.
+Size of training set is 9000, accuracy is 0.8196.
+Size of training set is 10000, accuracy is 0.8367.
+Size of training set is 11000, accuracy is 0.8373.

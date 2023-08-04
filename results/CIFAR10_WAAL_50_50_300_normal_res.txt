@@ -1,0 +1,15 @@
+dataset: CIFAR10
+AL strategy: WAAL
+number of labeled pool: 50
+number of unlabeled pool: 49950
+number of testing pool: 10000
+batch size: 50
+quota: 300
+time of repeat experiments: 3
+Size of training set is 50, accuracy is 0.2287.
+Size of training set is 100, accuracy is 0.2529.
+Size of training set is 150, accuracy is 0.2554.
+Size of training set is 200, accuracy is 0.2922.
+Size of training set is 250, accuracy is 0.3029.
+Size of training set is 300, accuracy is 0.341.
+Size of training set is 350, accuracy is 0.321.

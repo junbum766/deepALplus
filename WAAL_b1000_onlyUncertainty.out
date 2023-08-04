@@ -1,0 +1,66 @@
+
+CIFAR10
+RANDOM SEED 4666
+WAAL
+Class Distribution :  [ 93.  93. 101.  87. 102. 107.  98. 103. 111. 105.]
+Round 0
+testing accuracy 0.463
+
+
+Round 1
+Class Distribution :  [166. 174. 208. 209. 240. 200. 189. 234. 173. 207.]
+testing accuracy 0.5481
+
+
+Round 2
+Class Distribution :  [293. 243. 335. 325. 310. 305. 279. 334. 285. 291.]
+testing accuracy 0.6266
+
+
+Round 3
+Class Distribution :  [423. 341. 475. 451. 421. 393. 347. 411. 359. 379.]
+testing accuracy 0.7366
+
+
+Round 4
+Class Distribution :  [526. 410. 603. 619. 524. 493. 435. 506. 418. 466.]
+testing accuracy 0.6851
+
+
+Round 5
+Class Distribution :  [646. 495. 706. 757. 629. 605. 510. 617. 491. 544.]
+testing accuracy 0.7707
+
+
+Round 6
+Class Distribution :  [752. 561. 827. 935. 738. 725. 600. 692. 570. 600.]
+testing accuracy 0.7371
+
+
+Round 7
+Class Distribution :  [ 828.  619.  972. 1077.  857.  825.  707.  784.  645.  686.]
+testing accuracy 0.773
+
+
+Round 8
+Class Distribution :  [ 868.  656. 1050. 1277. 1005.  945.  778. 1001.  667.  753.]
+testing accuracy 0.798
+
+
+Round 9
+Class Distribution :  [ 995.  702. 1199. 1421. 1130. 1032.  928. 1051.  727.  815.]
+testing accuracy 0.8025
+
+
+Round 10
+Class Distribution :  [1116.  805. 1315. 1549. 1209. 1135. 1001. 1117.  852.  901.]
+testing accuracy 0.803
+
+
+SEED 4666
+WAAL
+[0.463  0.5481 0.6266 0.7366 0.6851 0.7707 0.7371 0.773  0.798  0.8025
+ 0.803 ]
+0: 0.711
+mean AUBC(acc): 0.711. std dev AUBC(acc): 0.0
+mean time: 19349.0. std dev time: 0.0

@@ -29,7 +29,8 @@ class WAAL(Strategy):
 		dis_score = self.pred_dis_score_waal(unlabeled_data)
 
 		# computing the decision score
-		total_score = uncertainly_score - self.selection * dis_score
+		# total_score = uncertainly_score - self.selection * dis_score ### original
+		total_score = uncertainly_score ### custom
 		b = total_score.sort()[1][:n]
 
 		return unlabeled_idxs[total_score.sort()[1][:n]]

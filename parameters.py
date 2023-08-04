@@ -61,19 +61,19 @@ args_pool = {'MNIST':
 				 'pretrained': False,
 				 'optimizer_args':{'lr': 0.001}},
 			'CIFAR10':
-				{'n_epoch': 30,   
+				{'n_epoch': 200, ### 30
 				 'name': 'CIFAR10',
 				 'transform_train': transforms.Compose([transforms.RandomCrop(size=32, padding=4),
     				transforms.RandomHorizontalFlip(), 
 					transforms.ToTensor(),
 				 	transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))]),
 				 'transform': transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2470, 0.2435, 0.2616))]),
-				 'loader_tr_args':{'batch_size': 128, 'num_workers': 4},
+				 'loader_tr_args':{'batch_size': 512, 'num_workers': 4}, # 128
 				 'loader_te_args':{'batch_size': 1000, 'num_workers': 4},
 				 'num_class':10,
 				 'pretrained': False,
-				 'optimizer':'Adam',
-				 'optimizer_args':{'lr': 0.001}},
+				 'optimizer':'SGD', ### Adam
+				 'optimizer_args':{'lr': 0.025, 'weight_decay': 3e-4, 'momentum': 0.9}}, ### 0.001
 			'CIFAR10_imb':
 				{'n_epoch': 30,   
 				 'name': 'CIFAR10_imb',
